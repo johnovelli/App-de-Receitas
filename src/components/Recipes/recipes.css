@@ -1,5 +1,27 @@
 .recipes {
   border: solid 2px black;
+  display: flex;
+  flex-direction: column;
   margin: auto;
   width: 1100px;
 }
+
+.recipes-top {
+  border: solid 2px purple;
+  display: flex;
+  height: 45px;
+  justify-content: center;
+}
+
+.recipes-title {
+  align-items: center;
+  border: solid 2px purple;
+  display: flex;
+  justify-content: center;
+  width: 230px;
+}
+
+.recipes-title img {
+  height: 40px;
+  margin-left: 10px;
+  }

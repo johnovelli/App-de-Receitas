@@ -7,14 +7,13 @@ function Header() {
   return (
     <div className="header">
       <div className="header-content">
+        <h2>App de Receitas</h2>
         <Link to="/App-de-Receitas/meals/">
           <img src={ MealImg } alt="" />
         </Link>
         <Link to="/App-de-Receitas/drinks/">
           <img src={ DrinkImg } alt="" />
         </Link>
-        <h2>App de Receitas</h2>
-        <input type="text" />
       </div>
     </div>
   );
