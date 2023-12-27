@@ -1,0 +1,13 @@
+.header {
+  border: solid 2px black;
+  width: auto;
+}
+
+.header-content {
+  align-items: center;
+  border: solid 2px green;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  width: 1100px;
+}
