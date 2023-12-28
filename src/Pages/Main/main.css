@@ -1,0 +1,16 @@
+.Main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.content {
+  background-color: #eccea0;
+  flex: 1;
+}
+
+.content-Dark {
+  background-color: #110b02;
+}

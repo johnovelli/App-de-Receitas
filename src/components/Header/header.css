@@ -1,19 +1,30 @@
 .header {
+  background: linear-gradient(180deg, #f89b0e, #f49d19);
   border: solid 2px black;
+  border-top: none;
+  border-left: none;
+  border-right: none;
   display: flex;
+  height: 60px;
   justify-content: center;
   width: auto;
 }
 
+.header-Dark {
+  background: linear-gradient(180deg, #6e460b, #492e07);
+  border-color: #835107;
+  color: #fefefe;
+}
+
 .header-content {
   align-items: center;
-  border: solid 2px green;
   display: flex;
   justify-content: center;
-  width: 300px;
+  width: 320px;
 }
 
 .header-content img{
   height: 35px;
   margin-left: 5px;
 }
+
