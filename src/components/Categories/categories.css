@@ -1,0 +1,18 @@
+.categories {
+  align-items: center;
+  border: solid 2px black;
+  display: flex;
+  height: 35px;
+  margin-top: 5px;
+  width: 1080px;
+}
+
+.categories button {
+  height: 30px;
+  margin-left: 2px;
+  padding: 0 10px;
+}
+
+.selected {
+background-color: rgb(194, 113, 15);
+}

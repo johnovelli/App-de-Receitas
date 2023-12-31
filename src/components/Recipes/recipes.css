@@ -12,20 +12,14 @@
   border-radius: 10px;
   display: flex;
   height: 45px;
-  margin-top: 15px;
+  margin-top: 10px;
   justify-content: center;
   width: 1100px;
 }
 
 .recipes-top-Dark {
-  background: linear-gradient(180deg, #7f520d, #342106);
+  background: linear-gradient(180deg, #bb7b1a, #915809);
   color: #fefefe;
-}
-
-.top-void {
-  align-items: center;
-  display: flex;
-  width: 200px;
 }
 
 .recipes-title {
@@ -42,8 +36,12 @@
 
 .recipes-title img {
   height: 32px;
-  margin-left: 10px;
+  margin-left: 15px;
   margin-right: 13px;
+}
+
+.recipes-title input {
+  height: 25px;
 }
 
 .recipes-div {
@@ -53,14 +51,15 @@
   box-shadow: 1px 5px 15px black;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
+  margin-bottom: 10px;
   margin-top: 10px;
   width: 1099px;
 }
 
 .recipes-div-Dark {
-  background: linear-gradient(180deg, #6e460b, #492e07);
-  box-shadow: 1px 2px 10px #835107;
+  background: linear-gradient(180deg, #a36c18, #794a08);
+  box-shadow: 1px 2px 5px #835107;
   color: #fefefe;
 }
 
@@ -71,24 +70,64 @@
   box-shadow: 0px 5px 15px black;
   display: flex;
   flex-direction: column;
-  height: 225px;
-  justify-content: center;
-  margin-left: 15px;
+  min-height: 260px;
+  justify-content: space-around;
   margin-bottom: 10px;
   margin-top: 5px;
-  width: 190px;
+  text-align: center;
+  width: 200px;
 }
 
 .recipe-Dark {
-  background: linear-gradient(180deg, #3c2604, #6f470b);
+  background: linear-gradient(180deg, #bb7b1a, #915809);
 }
 
 .recipe img {
   border-radius: 10px;
-  height: 160px;
+  height: 170px;
 }
 
 .recipe h2 {
   padding: 0;
-  margin: 0 0 10px 0;
+  margin-top: 5px;
+}
+
+.recipe button {
+  height: 35px;
+  margin-bottom: 2px;
+  margin-top: 2px;
+  width: 110px;
+}
+
+@media only screen and (max-width: 600px) {
+  .recipes {
+    width: auto;
+  }
+
+  .recipes-top {
+    width: 370px;
+  }
+
+  .recipes-top h2 {
+    font-size: 23px;
+    margin-left: 11px;
+  }
+
+  .recipes-top img {
+    height: 30px;
+  }
+
+  .recipes-div {
+    width: 370px;
+  }
+
+  .recipe {
+    margin-left: 4px;
+    margin-right: 4px;
+    width: 170px;
+  }
+
+  .recipes-title input {
+    width: 145px;
+  }
 }

@@ -9,6 +9,7 @@ type AppProviderProps = {
 export function AppProvider({ children }: AppProviderProps) {
   const [mealsList, setMealsList] = useState([]);
   const [drinksList, setDrinksList] = useState([]);
+  const [categoryList, setCategoryList] = useState<any[]>([]);
   const [theme, setTheme] = useState<'Light' | 'Dark'>('Light');
 
   useEffect(() => {
@@ -26,6 +27,8 @@ export function AppProvider({ children }: AppProviderProps) {
       value={ {
         mealsList,
         drinksList,
+        categoryList,
+        setCategoryList,
         theme,
         setTheme,
       } }

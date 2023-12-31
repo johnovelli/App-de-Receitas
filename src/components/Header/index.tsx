@@ -19,7 +19,7 @@ function Header() {
   return (
     <div className={ `header header-${theme}` }>
       <div className="header-content">
-        <h2>App de Receitas</h2>
+        <h2>Recipe App</h2>
         <Link to="/App-de-Receitas/meals/">
           <img src={ MealImg } alt="" />
         </Link>

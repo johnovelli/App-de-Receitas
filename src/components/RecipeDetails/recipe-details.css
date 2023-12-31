@@ -1,0 +1,15 @@
+.recipe-details-main {
+    align-items: center;
+    border: solid 2px black;
+    display: flex;
+    height: 700px;
+    justify-content: space-around;
+    margin: 10px auto auto auto;
+    width: 1000px;
+}
+
+.details {
+    border: solid 2px black;
+    height: 690px;
+    width: 490px;
+}

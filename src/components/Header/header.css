@@ -1,6 +1,6 @@
 .header {
   background: linear-gradient(180deg, #f89b0e, #f49d19);
-  border: solid 2px black;
+  border: solid 1px black;
   border-top: none;
   border-left: none;
   border-right: none;
@@ -11,9 +11,13 @@
 }
 
 .header-Dark {
-  background: linear-gradient(180deg, #6e460b, #492e07);
+  background: linear-gradient(180deg, #d18b21, #915809);
   border-color: #835107;
   color: #fefefe;
+}
+
+.header h2 {
+  font-size: 28px;
 }
 
 .header-content {
@@ -24,7 +28,15 @@
 }
 
 .header-content img{
-  height: 35px;
-  margin-left: 5px;
+  height: 30px;
+  margin-left: 10px;
+  margin-top: 4px;
 }
 
+.header-content img:hover{
+  height: 32px;
+}
+
+.header button {
+  margin-left: 7px;
+}

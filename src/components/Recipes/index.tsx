@@ -1,6 +1,9 @@
+import { useNavigate } from 'react-router-dom';
 import { useContext, useState, useEffect } from 'react';
 import AppContext from '../../context/AppContext';
 import SearchImg from '../../images/searchIcon.svg';
+import SearchInput from '../SearchInput';
+import Categories from '../Categories';
 import './recipes.css';
 
 type RecipesType = {
@@ -9,8 +12,8 @@ type RecipesType = {
 };
 
 function Recipes({ recipeType, recipeList }: RecipesType) {
-  const { theme, mealsList, drinksList } = useContext(AppContext);
-  const [showSearch, setShowSearch] = useState(false);
+  const navigate = useNavigate();
+  const { theme } = useContext(AppContext);
   const [renderedList, setRenderedList] = useState<any[]>([]);
   const [searchInput, setSearchInput] = useState<string>('');
 
@@ -22,67 +25,58 @@ function Recipes({ recipeType, recipeList }: RecipesType) {
     getRenderedList();
   }, [recipeList]);
 
-  function toggleShowSearch() {
-    setShowSearch(!showSearch);
-  }
-
   function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
     setSearchInput(event.target.value);
   }
-
-  useEffect(() => {
-    if (recipeType === 'Meals') {
-      if (searchInput.length === 0) {
-        setRenderedList(mealsList);
-      }
-      const list = mealsList.filter((recipe: any) => (
-        recipe.strMeal.toLowerCase().includes(searchInput.toLocaleLowerCase())));
-      setRenderedList(list);
-    } if (recipeType === 'Drinks') {
-      if (searchInput.length === 0) {
-        setRenderedList(drinksList);
-      }
-      const list = drinksList.filter((recipe: any) => (
-        recipe.strDrink.toLowerCase().includes(searchInput.toLocaleLowerCase())));
-      setRenderedList(list);
-    }
-  }, [searchInput]);
 
   return (
     <div className="recipes">
       <div className={ `recipes-top recipes-top-${theme}` }>
         <div className="recipes-title">
           <h2>{`${recipeType} Recipes`}</h2>
-          <button onClick={ toggleShowSearch } aria-label="Search Button">
-            <img src={ SearchImg } alt="" />
-          </button>
-          {showSearch && (
-            <input type="text" onChange={ (e) => handleInputChange(e) } />
-          )}
+          <img src={ SearchImg } alt="" />
+          <SearchInput
+            recipeType={ recipeType }
+            searchInput={ searchInput }
+            setRenderedList={ setRenderedList }
+            // eslint-disable-next-line react/jsx-no-bind
+            handleInputChange={ handleInputChange }
+          />
         </div>
       </div>
-      {renderedList.length ? (
-        <div className={ `recipes-div recipes-div-${theme}` }>
-          {renderedList.slice(0, 15).map((recipe: any) => (
+      <div className={ `recipes-div recipes-div-${theme}` }>
+        <Categories
+          recipeType={ recipeType === 'Meals' ? 'Meals' : 'Drinks' }
+          setRenderedList={ setRenderedList }
+        />
+        {renderedList.length && (
+          renderedList.map((recipe: any) => (
             <div
               className={ `recipe recipe-${theme}` }
               key={ recipeType === 'Meals' ? recipe.idMeal : recipe.idDrink }
             >
-              <h2>{recipeType === 'Meals' ? recipe.strMeal : recipe.strDrink}</h2>
+              <h2>
+                {recipeType === 'Meals' ? recipe.strMeal : recipe.strDrink}
+              </h2>
               <img
                 src={
-                  recipeType === 'Meals'
-                    ? recipe.strMealThumb
-                    : recipe.strDrinkThumb
-                }
+                    recipeType === 'Meals'
+                      ? recipe.strMealThumb
+                      : recipe.strDrinkThumb
+                  }
                 alt=""
               />
+              <button
+                onClick={ () => (recipeType === 'Meals'
+                  ? navigate(`/App-de-Receitas/meals/${recipe.idMeal}`)
+                  : navigate(`/App-de-Receitas/drinks/${recipe.idDrink}`)) }
+              >
+                Full Recipe
+              </button>
             </div>
-          ))}
-        </div>
-      ) : (
-        <p>Loading</p>
-      )}
+          ))
+        )}
+      </div>
     </div>
   );
 }
