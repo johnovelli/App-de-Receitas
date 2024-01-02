@@ -5,11 +5,7 @@ import AppContext from '../../context/AppContext';
 function DrinksRecipes() {
   const { drinksList } = useContext(AppContext);
 
-  return (
-    <div>
-      <Recipes recipeType="Drinks" recipeList={ drinksList } />
-    </div>
-  );
+  return <Recipes recipeType="Drinks" recipeList={ drinksList } />;
 }
 
 export default DrinksRecipes;

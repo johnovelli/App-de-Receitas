@@ -39,6 +39,7 @@ function Recipes({ recipeType, recipeList }: RecipesType) {
             recipeType={ recipeType }
             searchInput={ searchInput }
             setRenderedList={ setRenderedList }
+            setSearchInput={ setSearchInput }
             // eslint-disable-next-line react/jsx-no-bind
             handleInputChange={ handleInputChange }
           />

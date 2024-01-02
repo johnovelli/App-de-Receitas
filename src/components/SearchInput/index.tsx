@@ -5,6 +5,7 @@ type SearchInputType = {
   recipeType: 'Meals' | 'Drinks';
   searchInput: string;
   setRenderedList: React.Dispatch<React.SetStateAction<any[]>>;
+  setSearchInput: React.Dispatch<React.SetStateAction<string>>;
   handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
@@ -12,24 +13,30 @@ function SearchInput({
   recipeType,
   searchInput,
   setRenderedList,
+  setSearchInput,
   handleInputChange }: SearchInputType) {
-  const { mealsList, drinksList } = useContext(AppContext);
+  const { mealsList, drinksList, categoryList } = useContext(AppContext);
+
+  useEffect(() => {
+    setSearchInput('');
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [categoryList]);
 
   useEffect(() => {
     function getSearchedList() {
-      if (recipeType === 'Meals') {
-        if (searchInput.length === 0) {
-          setRenderedList(mealsList);
-        }
-        const list = mealsList.filter((recp: any) => (
-          recp.strMeal.toLowerCase().includes(searchInput.toLocaleLowerCase())));
+      if (categoryList.length > 0) {
+        const list = recipeType === 'Meals'
+          ? categoryList.filter((recp: any) => (
+            recp.strMeal.toLowerCase().includes(searchInput.toLocaleLowerCase())))
+          : categoryList.filter((recp: any) => (
+            recp.strDrink.toLowerCase().includes(searchInput.toLocaleLowerCase())));
         setRenderedList(list);
-      } if (recipeType === 'Drinks') {
-        if (searchInput.length === 0) {
-          setRenderedList(drinksList);
-        }
-        const list = drinksList.filter((recp: any) => (
-          recp.strDrink.toLowerCase().includes(searchInput.toLocaleLowerCase())));
+      } else {
+        const list = recipeType === 'Meals'
+          ? mealsList.filter((recp: any) => (
+            recp.strMeal.toLowerCase().includes(searchInput.toLocaleLowerCase())))
+          : drinksList.filter((recp: any) => (
+            recp.strDrink.toLowerCase().includes(searchInput.toLocaleLowerCase())));
         setRenderedList(list);
       }
     }
@@ -42,6 +49,7 @@ function SearchInput({
       type="text"
       onChange={ handleInputChange }
       placeholder="Search Recipe"
+      value={ searchInput }
     />
   );
 }

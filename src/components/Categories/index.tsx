@@ -38,8 +38,10 @@ function Categories({ recipeType, setRenderedList }: CategoriesType) {
   async function getCategoryRecipes(strCategory: string) {
     if (strCategory === selectedCategory) {
       setSelectedCategory('');
+      setCategoryList([]);
       const recipeList = recipeType === 'Meals' ? mealsList : drinksList;
       setRenderedList(recipeList);
+      setCategoryList([]);
     } else {
       const url = recipeType === 'Meals'
         ? `https://www.themealdb.com/api/json/v1/1/filter.php?c=${strCategory}`
@@ -47,16 +49,28 @@ function Categories({ recipeType, setRenderedList }: CategoriesType) {
       const response = await fetch(url);
       const data = await response.json();
       const recipeList = recipeType === 'Meals' ? data.meals : data.drinks;
-      console.log(recipeList);
+      setCategoryList(recipeList);
       setSelectedCategory(strCategory);
       setRenderedList(recipeList);
     }
+  }
+
+  function getRecommended() {
+    setSelectedCategory('');
+    setCategoryList([]);
+    setRenderedList(recipeType === 'Meals' ? mealsList : drinksList);
   }
 
   return (
     <div>
       {categories && (
         <div className={ `categories categories${theme}` }>
+          <button
+            onClick={ getRecommended }
+            className={ categoryList.length > 0 ? '' : 'selected' }
+          >
+            Recommended
+          </button>
           {categories.map((ctg) => (
             <button
               key={ ctg.strCategory }
@@ -67,6 +81,9 @@ function Categories({ recipeType, setRenderedList }: CategoriesType) {
               {ctg.strCategory}
             </button>
           ))}
+          <button>
+            X
+          </button>
         </div>
       )}
     </div>
