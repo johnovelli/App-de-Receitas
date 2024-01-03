@@ -13,7 +13,6 @@ function MealDetails() {
       const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
       const response = await fetch(url);
       const data = await response.json();
-      console.log(data.meals);
       setRecipe(data.meals);
     }
     getRecipe();

@@ -10,7 +10,17 @@ export function AppProvider({ children }: AppProviderProps) {
   const [mealsList, setMealsList] = useState([]);
   const [drinksList, setDrinksList] = useState([]);
   const [categoryList, setCategoryList] = useState<any[]>([]);
+  const [favoriteList, setFavoriteList] = useState<any[]>([]);
+  const [finishedList, setFinishedList] = useState<any[]>([]);
   const [theme, setTheme] = useState<'Light' | 'Dark'>('Light');
+
+  useEffect(() => {
+    // Carregar a lista de favoritos do localStorage ao inicializar
+    const storedFavoriteList = localStorage.getItem('favoriteList');
+    if (storedFavoriteList) {
+      setFavoriteList(JSON.parse(storedFavoriteList));
+    }
+  }, []);
 
   useEffect(() => {
     async function getMealsAndDrinks() {
@@ -29,6 +39,10 @@ export function AppProvider({ children }: AppProviderProps) {
         drinksList,
         categoryList,
         setCategoryList,
+        favoriteList,
+        setFavoriteList,
+        finishedList,
+        setFinishedList,
         theme,
         setTheme,
       } }

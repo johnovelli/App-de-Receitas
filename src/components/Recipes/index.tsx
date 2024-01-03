@@ -13,7 +13,7 @@ type RecipesType = {
 
 function Recipes({ recipeType, recipeList }: RecipesType) {
   const navigate = useNavigate();
-  const { theme } = useContext(AppContext);
+  const { mealsList, theme } = useContext(AppContext);
   const [renderedList, setRenderedList] = useState<any[]>([]);
   const [searchInput, setSearchInput] = useState<string>('');
 
@@ -50,7 +50,7 @@ function Recipes({ recipeType, recipeList }: RecipesType) {
           recipeType={ recipeType === 'Meals' ? 'Meals' : 'Drinks' }
           setRenderedList={ setRenderedList }
         />
-        {renderedList.length && (
+        {renderedList.length ? (
           renderedList.map((recipe: any) => (
             <div
               className={ `recipe recipe-${theme}` }
@@ -76,6 +76,10 @@ function Recipes({ recipeType, recipeList }: RecipesType) {
               </button>
             </div>
           ))
+        ) : (
+          <p>
+            {mealsList.length === 0 ? 'Loading' : 'Recipe not found'}
+          </p>
         )}
       </div>
     </div>

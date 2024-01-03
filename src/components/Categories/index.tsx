@@ -81,7 +81,9 @@ function Categories({ recipeType, setRenderedList }: CategoriesType) {
               {ctg.strCategory}
             </button>
           ))}
-          <button>
+          <button
+            onClick={ getRecommended }
+          >
             X
           </button>
         </div>
