@@ -17,6 +17,7 @@ function App() {
           <Route path="/App-de-Receitas/drinks/" element={ <DrinksRecipes /> } />
           <Route path="/App-de-Receitas/meals/:id" element={ <MealDetails /> } />
           <Route path="/App-de-Receitas/drinks/:id" element={ <DrinkDetails /> } />
+          <Route path="*" element={ <MealsRecipes /> } />
         </Route>
       </Routes>
     </AppProvider>
